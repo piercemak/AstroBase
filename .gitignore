@@ -1,0 +1,16 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyc
+
+# SQLite database files
+*.sqlite3
+
+# Environment variables
+.env
+
+# IDE-specific settings (PyCharm)
+.idea/
+
+# Virtual environment files and directories
+myenv/

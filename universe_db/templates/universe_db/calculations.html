@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head><script src="{% static 'js/color-modes.js' %}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Calculations</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=REM:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=REM:wght@500&family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'autocomplete_light/autocomplete.init.js' %}"></script>
+    <script src="{% static 'autocomplete_light/select2.js' %}"></script>
+    <script src="{% static 'autocomplete_light/jquery.post-setup.js' %}"></script>
+
+
+    <style>
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        th:last-child, td:last-child {
+            border-right: none;
+        }
+
+        .pagination {
+            margin-top: 10px;
+        }
+
+        .pagination a {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #ddd;
+        }
+
+        .pagination .current-page {
+            font-weight: bold;
+        }
+
+        .search-form {
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            margin-right: 10px;
+        }
+
+        .search-button {
+            margin-left: 10px;
+        }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+        #header-background
+        {
+            background: url('/static/images/deepfield3.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        #footer-background
+        {
+            background: url('/static/images/deepfield3.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .planet-name
+        {
+          text-decoration: none;
+        }
+
+        .my-carousel
+        {
+          margin-bottom: 50px;  /* Adjust the value to get the desired gap */
+        }
+
+        .navbar
+        {
+            width: 110% !important;
+        }
+
+        .navbar-brand
+        {
+          box-shadow: none !important;
+        }
+
+        body, .container-fluid
+        {
+          max-width: 100%;
+          overflow-x: hidden; /* To hide horizontal scroll */
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+
+    <header data-bs-theme="dark">
+      <div class="collapse text-bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4>About me</h4>
+              <p class="text-body-secondary">I'm a recent graduate from Rutgers University, with a Physics BS (Astrophysics) and a minor in Computer Science. My academic journey, fueled by a deep fascination for astronomy and a keen interest in software development, has given me a strong footing in both worlds. Recently, I delved into web development, leveraging Python, Django, and Bootstrap to create robust and responsive websites. After successfully developing a full-stack website, I'm now poised to embark on a journey as a full-stack developer, combining my passion for problem-solving with my software skills. Simply put, I love learning, love challenges, and am excited to make my mark in the field of computer science and web development.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4>Contact me</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://www.linkedin.com/in/pierce-makombe-5a8406221" class="text-white">LinkedIn</a></li>
+                <li><a href="{% static 'files/Resume.pdf' %}" target="_blank" class="text-white">Resume</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand bg-dark fw-light color_white" href="{% url 'universe_db:homepage' %}">
+              <div>
+                <img src="{% static 'images/Icon.PNG' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+                Astro
+              </div>
+              <div>
+                  Calculations
+              </div>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+
+     <main>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col" style="padding-right: 0px;padding-left: 0px;">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-bg-primary border-primary">
+            <h4 class="my-0 fw-normal">Calculations</h4>
+          </div>
+          <div class="card-body">
+            <!-- Form to input the planet or planetary system name and choose the calculation type -->
+            <form method="GET" action="{% url 'universe_db:calculate' %}">
+                <h3>
+                    <!-- Planetary system form field -->
+                    <label for="calculation">Planet</label>
+                    {{ planetary_system_form.name.label_tag }} {{ planetary_system_form.name }}
+
+                </h3>
+                    <div style="display: flex; align-items: center; justify-content: center; margin-top: 30px;">
+                        <h3 for="calculation" style="margin-right: 10px;">
+                            Calculation Type:
+                        </h3>
+                        <select id="calculation" name="calculation" style="margin-right: 10px;" class="btn btn-secondary dropdown-toggle">
+                            <option value="exo_surface_gravity">Surface Gravity</option>
+                            <option value="luminosity">Stellar Luminosity</option>
+                            <option value="escape_velocity">Escape Velocity</option>
+                            <option value="exo_density">Exoplanet Density</option>
+                            <option value="transit_dur">Transit Duration</option>
+                        </select>
+                    </div>
+                <input type="submit" value="Calculate" class="btn btn-lg btn-success" style="margin-top: 20px; width:20%; font-family: 'Roboto', sans-serif !important;">
+            </form>
+            <div style="margin-top: 20px;">
+                {% if result and result != 'Cannot calculate, insufficient data' %}
+                    <h3>Calculation Result:</h3>
+                    {% if calculation == "exo_surface_gravity" %}
+                        <div style="font-family: 'Roboto', sans-serif !important; font-size: 20px; color:green">The Surface Gravity of the selected exoplanet is: {{ result }} m/s²</div>
+                    {% elif calculation == "luminosity" %}
+                        <div style="font-family: 'Roboto', sans-serif !important; font-size: 20px; color:green">The Stellar Luminosity of the host star is: {{ result }} W</div>
+                    {% elif calculation == "escape_velocity" %}
+                        <div style="font-family: 'Roboto', sans-serif !important; font-size: 20px; color:green">The Escape Velocity of the selected exoplanet is {{ result }} km/s</div>
+                    {% elif calculation == "exo_density" %}
+                        <div style="font-family: 'Roboto', sans-serif !important; font-size: 20px; color:green">The Density of the selected exoplanet is {{ result }} kg/m³</div>
+                    {% elif calculation == "transit_dur" %}
+                        <div style="font-family: 'Roboto', sans-serif !important; font-size: 20px; color:green">The Transit Duration of the exoplanet is {{ result }} days</div>
+                    {% endif %}
+                {% else %}
+                    <h3>Calculation Result: <span style="color: red;">Cannot calculate, insufficient data</span></h3>
+
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    {{ planet_form.media }}
+    {{ planetary_system_form.media }}
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+
+
+</body>
+</html>

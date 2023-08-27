@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 6000px;">
+
+{% load static %}
+<head><script src="{% static 'js/color-modes.js' %}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Planetary Systems</title>
+
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">    <!-- Links the CSS file for styling the webpage -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=REM:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=REM:wght@500&family=Roboto&display=swap" rel="stylesheet">
+
+
+
+    <style>
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        th:last-child, td:last-child {
+            border-right: none;
+        }
+
+        .pagination {
+            margin-top: 10px;
+        }
+
+        .pagination a {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #ddd;
+        }
+
+        .pagination .current-page {
+            font-weight: bold;
+        }
+
+        .search-form {
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            margin-right: 10px;
+        }
+
+        .search-button {
+            margin-left: 10px;
+        }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+        #header-background
+        {
+            background: url('/static/images/deepfield3.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        #footer-background
+        {
+            background: url('/static/images/deepfield3.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .planet-name
+        {
+          text-decoration: none;
+        }
+
+        .my-carousel
+        {
+          margin-bottom: 50px;  /* Adjust the value to get the desired gap */
+        }
+
+        .navbar
+        {
+            width: 100% !important;
+        }
+
+        .navbar-brand
+        {
+          box-shadow: none !important;
+        }
+
+    </style>
+</head>
+<body>
+
+   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+
+    <header data-bs-theme="dark">
+      <div class="collapse text-bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4>About me</h4>
+              <p class="text-body-secondary">I'm a recent graduate from Rutgers University, with a Physics BS (Astrophysics) and a minor in Computer Science. My academic journey, fueled by a deep fascination for astronomy and a keen interest in software development, has given me a strong footing in both worlds. Recently, I delved into web development, leveraging Python, Django, and Bootstrap to create robust and responsive websites. After successfully developing a full-stack website, I'm now poised to embark on a journey as a full-stack developer, combining my passion for problem-solving with my software skills. Simply put, I love learning, love challenges, and am excited to make my mark in the field of computer science and web development.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4>Contact me</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://www.linkedin.com/in/pierce-makombe-5a8406221" class="text-white">LinkedIn</a></li>
+                <li><a href="{% static 'files/Resume.pdf' %}" target="_blank" class="text-white">Resume</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand bg-dark fw-light color_white" href="{% url 'universe_db:homepage' %}">
+              <div>
+                <img src="{% static 'images/Icon.PNG' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+                Astro
+              </div>
+              <div>
+                Planetary System Database
+              </div>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+
+
+
+
+
+
+
+    <form method="GET" action="{% url 'universe_db:planetary_systems' %}" class="search-form">
+        <table class="table-bordered table-striped">
+            <thead class="table table-dark" style="--bs-table-border-color: white !important;">
+                <tr>
+                    <th>Name
+                        <input type="text" class="search-box" name="name" value="{{ request.GET.name|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Name...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Host Name
+                        <input type="text" class="search-box" name="hostname" value="{{ request.GET.hostname|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Host Name...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Number of Stars
+                        <input type="text" class="search-box" name="number_of_stars" value="{{ request.GET.number_of_stars|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Number of Stars...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Number of Planets
+                        <input type="text" class="search-box" name="number_of_planets" value="{{ request.GET.number_of_planets|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Number of Planets...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Discovery Method
+                        <input type="text" class="search-box" name="discovery_method" value="{{ request.GET.discovery_method|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Discovery Method...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Discovery Year
+                        <input type="text" class="search-box" name="discovery_year" value="{{ request.GET.discovery_year|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Discovery Year...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Discovery Facility
+                        <input type="text" class="search-box" name="discovery_facility" value="{{ request.GET.discovery_facility|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Discovery Facility...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Orbit Period
+                        <input type="text" class="search-box" name="orbit_period" value="{{ request.GET.orbit_period|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Orbit Period...">
+                       <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Radius (Jupiter Radius)
+                        <input type="text" class="search-box" name="radius" value="{{ request.GET.radius|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Radius...">
+                       <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Mass (Jupiter Mass)
+                        <input type="text" class="search-box" name="mass" value="{{ request.GET.mass|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Mass...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Equilibrium Temperature (K)
+                        <input type="text" class="search-box" name="equilibrium_temperature" value="{{ request.GET.equilibrium_temperature|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Equilibrium Temperature...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Spectral Type
+                        <input type="text" class="search-box" name="spectral_type" value="{{ request.GET.spectral_type|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Spectral Type...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Stellar Effective Temperature (K)
+                        <input type="text" class="search-box" name="stellar_effective_temp" value="{{ request.GET.stellar_effective_temp|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Stellar Effective Temperature...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Stellar Mass (Solar Mass)
+                        <input type="text" class="search-box" name="stellar_mass" value="{{ request.GET.stellar_mass|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Stellar Mass...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Stellar Metallicity (dex)
+                        <input type="text" class="search-box" name="stellar_metallicity" value="{{ request.GET.stellar_metallicity|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Stellar Metallicity...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Stellar Metallicity Ratio
+                        <input type="text" class="search-box" name="stellar_metallicity_ratio" value="{{ request.GET.stellar_metallicity_ratio|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Stellar Metallicity Ratio...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Stellar Surface Gravity (log10(cm/s**2))
+                        <input type="text" class="search-box" name="stellar_surface_gravity" value="{{ request.GET.stellar_surface_gravity|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Stellar Surface Gravity...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Right Ascension (sexagesimal)
+                        <input type="text" class="search-box" name="ra" value="{{ request.GET.ra|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Right Ascension...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Declination (sexagesimal)
+                        <input type="text" class="search-box" name="dec" value="{{ request.GET.dec|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Declination...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Distance (pc)
+                        <input type="text" class="search-box" name="distance" value="{{ request.GET.distance|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Distance...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Eccentricity
+                        <input type="text" class="search-box" name="eccentricity" value="{{ request.GET.eccentricity|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Eccentricity...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Stellar Radius (Solar Radius)
+                        <input type="text" class="search-box" name="stellar_radius" value="{{ request.GET.stellar_radius|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Stellar Radius...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Semi-Major Axis (Au)
+                        <input type="text" class="search-box" name="semimajor_axis" value="{{ request.GET.semimajor_axis|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Semi-major Axis...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                    <th>Impact Parameter
+                        <input type="text" class="search-box" name="impact_parameter" value="{{ request.GET.impact_parameter|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Impact Parameter...">
+                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
+                    </th>
+
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for planetary_system in page_obj %}
+                    <tr>
+                        <td>{{ planetary_system.name|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.hostname|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.number_of_stars|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.number_of_planets|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.discovery_method|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.discovery_year|default_if_none:''|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.discovery_facility|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.orbit_period|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.radius|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.mass|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.equilibrium_temperature|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.spectral_type|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.stellar_effective_temp|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.stellar_mass|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.stellar_metallicity|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.stellar_metallicity_ratio|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.stellar_surface_gravity|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.ra|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.dec|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.distance|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.eccentricity|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.stellar_radius|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.semimajor_axis|default_if_none:"N/A" }}</td>
+                        <td>{{ planetary_system.impact_parameter|default_if_none:"N/A" }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="22">No planetary systems found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                {% url 'universe_db:planetary_systems' as planetary_systems_url %}
+                <a href="{{ planetary_systems_url }}?{{ request.urlencode }}&amp;page=1" class="btn btn-primary btn-sm">&laquo; first</a>
+                <a href="{{ planetary_systems_url }}?{{ request.urlencode }}&amp;page={{ page_obj.previous_page_number }}" class="btn btn-primary btn-sm">previous</a>
+            {% endif %}
+
+            <span class="current-page">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+                {% url 'universe_db:planetary_systems' as planetary_systems_url %}
+                <a href="{{ planetary_systems_url }}?{{ request.urlencode }}&amp;page={{ page_obj.next_page_number }}" class="btn btn-primary btn-sm">next</a>
+                <a href="{{ planetary_systems_url }}?{{ request.urlencode }}&amp;page={{ page_obj.paginator.num_pages }}" class="btn btn-primary btn-sm">last &raquo;</a>
+            {% endif %}
+
+            <span class="total-records">Total Records: {{ page_obj.paginator.count }}</span>
+        </span>
+    </div>
+
+
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
