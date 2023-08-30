@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-$a@c9_%ohc2nj6u-)d0pca(_#(bh1if@mw=iybrin7r)zb8n-z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.astrolarity.com']
 
 
 # Application definition
