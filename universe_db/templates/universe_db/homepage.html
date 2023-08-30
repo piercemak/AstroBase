@@ -17,8 +17,9 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">    <!-- Bootstrap classes for styling the content wrapper -->
 
         <header class="mb-auto">     <!-- A Bootstrap class for setting the margin-bottom to auto -->
-            <div>
-                <h3 class="float-md-start mb-0">Astronomical Objects Database</h3>  <!-- Bootstrap classes for text alignment and margin settings -->
+            <div class="d-flex align-items-center">
+                <img src="{% static 'images/Icon.PNG' %}" width="35" height="35" class="d-inline-block align-top" alt="">
+                <h3 class="mb-0" style="font-size: 40px; margin-left: 10px;">Astrolarity</h3>
             </div>
         </header>
 
@@ -31,19 +32,19 @@
                 <div class="col-lg-4">  <!-- for setting the width of the element on large screens -->
 
                 <!-- for styling the button -->
-                    <h3><a class="btn btn-lg btn-secondary fw-bold border-white bg-white" href="{% url 'universe_db:planet_list' %}"style="--bs-btn-hover-color: black">Solar System Planets</a></h3>
+                    <h3><a class="btn btn-lg fw-bold border-white bg-white" href="{% url 'universe_db:planet_list' %}"style="--bs-btn-hover-color: black">Solar System Planets</a></h3>
                 </div>
                 <div class="col-lg-4">
-                    <h3><a class="btn btn-lg btn-secondary fw-bold border-white bg-white" href="{% url 'universe_db:planetary_systems' %}" style="--bs-btn-hover-color: black">Exoplanets</a></h3>
+                    <h3><a class="btn btn-lg fw-bold border-white bg-white" href="{% url 'universe_db:planetary_systems' %}" style="--bs-btn-hover-color: black">Exoplanets</a></h3>
                 </div>
                 <div class="col-lg-4">
-                    <h3><a class="btn btn-lg btn-secondary fw-bold border-white bg-white" href="{% url 'universe_db:calculate' %}" style="--bs-btn-hover-color: black">Calculations</a></h3>
+                    <h3><a class="btn btn-lg fw-bold border-white bg-white" href="{% url 'universe_db:calculate' %}" style="--bs-btn-hover-color: black">Calculations</a></h3>
                 </div>
             </div>
         </main>
 
         <footer class="mt-auto text-white-50">  <!-- for setting the margin-top to auto and the text color to 50% white -->
-            <p>Copyright © 2023 Astronomical Objects Database</p>
+            <p>All images and data courtesy of NASA, ESA, CSA, and STScI</p>
         </footer>
     </div>
 
