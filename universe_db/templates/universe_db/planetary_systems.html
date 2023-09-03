@@ -277,77 +277,77 @@
             <thead class="table table-dark" style="--bs-table-border-color: white !important;">
                 <tr>
                     <th>Name
-                        <input type="text" class="search-box" name="name" value="{{ request.GET.name|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Name...">
+                        <input type="text" class="search-box" name="name" value="{{ request.GET.name|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Name...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Host Name
-                        <input type="text" class="search-box" name="hostname" value="{{ request.GET.hostname|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Host Name...">
+                        <input type="text" class="search-box" name="hostname" value="{{ request.GET.hostname|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Host Name...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Number of Stars
-                        <input type="text" class="search-box" name="number_of_stars" value="{{ request.GET.number_of_stars|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Number of Stars...">
+                        <input type="text" class="search-box" name="number_of_stars" value="{{ request.GET.number_of_stars|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Number of Stars...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Number of Planets
-                        <input type="text" class="search-box" name="number_of_planets" value="{{ request.GET.number_of_planets|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Number of Planets...">
+                        <input type="text" class="search-box" name="number_of_planets" value="{{ request.GET.number_of_planets|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Number of Planets...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Discovery Method
-                        <input type="text" class="search-box" name="discovery_method" value="{{ request.GET.discovery_method|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Discovery Method...">
+                        <input type="text" class="search-box" name="discovery_method" value="{{ request.GET.discovery_method|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Discovery Method...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Discovery Year
-                        <input type="text" class="search-box" name="discovery_year" value="{{ request.GET.discovery_year|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Discovery Year...">
+                        <input type="text" class="search-box" name="discovery_year" value="{{ request.GET.discovery_year|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Discovery Year...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Discovery Facility
-                        <input type="text" class="search-box" name="discovery_facility" value="{{ request.GET.discovery_facility|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Discovery Facility...">
+                        <input type="text" class="search-box" name="discovery_facility" value="{{ request.GET.discovery_facility|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Discovery Facility...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Orbit Period
-                        <input type="text" class="search-box" name="orbit_period" value="{{ request.GET.orbit_period|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Orbit Period...">
+                        <input type="text" class="search-box" name="orbit_period" value="{{ request.GET.orbit_period|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Orbit Period...">
                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Radius (Jupiter Radius)
-                        <input type="text" class="search-box" name="radius" value="{{ request.GET.radius|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Radius...">
+                        <input type="text" class="search-box" name="radius" value="{{ request.GET.radius|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Radius...">
                        <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Mass (Jupiter Mass)
-                        <input type="text" class="search-box" name="mass" value="{{ request.GET.mass|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Mass...">
+                        <input type="text" class="search-box" name="mass" value="{{ request.GET.mass|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Mass...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Equilibrium Temperature (K)
-                        <input type="text" class="search-box" name="equilibrium_temperature" value="{{ request.GET.equilibrium_temperature|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Equilibrium Temperature...">
+                        <input type="text" class="search-box" name="equilibrium_temperature" value="{{ request.GET.equilibrium_temperature|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Equilibrium Temperature...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Spectral Type
-                        <input type="text" class="search-box" name="spectral_type" value="{{ request.GET.spectral_type|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Spectral Type...">
+                        <input type="text" class="search-box" name="spectral_type" value="{{ request.GET.spectral_type|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Spectral Type...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Stellar Effective Temperature (K)
-                        <input type="text" class="search-box" name="stellar_effective_temp" value="{{ request.GET.stellar_effective_temp|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Stellar Effective Temperature...">
+                        <input type="text" class="search-box" name="stellar_effective_temp" value="{{ request.GET.stellar_effective_temp|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Stellar Effective Temperature...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Stellar Mass (Solar Mass)
-                        <input type="text" class="search-box" name="stellar_mass" value="{{ request.GET.stellar_mass|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Stellar Mass...">
+                        <input type="text" class="search-box" name="stellar_mass" value="{{ request.GET.stellar_mass|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Stellar Mass...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Stellar Metallicity (dex)
-                        <input type="text" class="search-box" name="stellar_metallicity" value="{{ request.GET.stellar_metallicity|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Stellar Metallicity...">
+                        <input type="text" class="search-box" name="stellar_metallicity" value="{{ request.GET.stellar_metallicity|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Stellar Metallicity...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
@@ -362,37 +362,37 @@
                     </th>
 
                     <th>Right Ascension (sexagesimal)
-                        <input type="text" class="search-box" name="ra" value="{{ request.GET.ra|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Right Ascension...">
+                        <input type="text" class="search-box" name="ra" value="{{ request.GET.ra|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Right Ascension...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Declination (sexagesimal)
-                        <input type="text" class="search-box" name="dec" value="{{ request.GET.dec|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Declination...">
+                        <input type="text" class="search-box" name="dec" value="{{ request.GET.dec|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Declination...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Distance (pc)
-                        <input type="text" class="search-box" name="distance" value="{{ request.GET.distance|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Distance...">
+                        <input type="text" class="search-box" name="distance" value="{{ request.GET.distance|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Distance...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Eccentricity
-                        <input type="text" class="search-box" name="eccentricity" value="{{ request.GET.eccentricity|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Eccentricity...">
+                        <input type="text" class="search-box" name="eccentricity" value="{{ request.GET.eccentricity|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Eccentricity...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Stellar Radius (Solar Radius)
-                        <input type="text" class="search-box" name="stellar_radius" value="{{ request.GET.stellar_radius|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Stellar Radius...">
+                        <input type="text" class="search-box" name="stellar_radius" value="{{ request.GET.stellar_radius|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Stellar Radius...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Semi-Major Axis (Au)
-                        <input type="text" class="search-box" name="semimajor_axis" value="{{ request.GET.semimajor_axis|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Semi-major Axis...">
+                        <input type="text" class="search-box" name="semimajor_axis" value="{{ request.GET.semimajor_axis|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Semi-major Axis...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
                     <th>Impact Parameter
-                        <input type="text" class="search-box" name="impact_parameter" value="{{ request.GET.impact_parameter|default_if_none:'' }}" style="background-color: white;" placeholder="Search by Impact Parameter...">
+                        <input type="text" class="search-box" name="impact_parameter" value="{{ request.GET.impact_parameter|default_if_none:'' }}" style="background-color: white; color:black;" placeholder="Search by Impact Parameter...">
                         <button type="submit" class="search-button btn btn-primary btn-sm" style="margin-top: 10px; background-color: #007bff;">Search</button>
                     </th>
 
